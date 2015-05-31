@@ -16,7 +16,7 @@ angular.module('storeApp')
     	var def = $q.defer();
 
 
-    	$http.get(ENV.apiEndPoint + '/marketads', {cache:true}).
+    	$http.get(ENV.apiEndPoint + '/marketads').
     		success(function(data,status){
     			$log.debug('Products retrieval was successfull with status: ' + status);
     			if (data !== null && data.length > 0){
