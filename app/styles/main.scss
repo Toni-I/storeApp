@@ -21,12 +21,7 @@ body {
 }
 
 
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
+
 
 
 .header {
@@ -80,6 +75,12 @@ body {
     }
   }
 }
+
+
+
+.navbar-toggle .icon-bar {
+  background-color: #fff;
+  }
 
 .container-narrow > hr {
   margin: 30px 0;
@@ -228,12 +229,6 @@ body {
   }
 
   
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
  
   
   
