@@ -27,7 +27,7 @@ angular.module('storeApp')
   			$log.debug('Product added succesfully: ' +data);
   			$scope.resetForm();
   			$scope.hasAdded = true;
-  			$timeout(removeSuccessMessage, 4000);
+  			$timeout($scope.removeSuccessMessage, 4000);
   		},
   		function(data){
   			$log.debug('Error: ' + data);
@@ -36,7 +36,7 @@ angular.module('storeApp')
 
     $scope.removeSuccessMessage = function(){
     	$scope.hasAdded = false;
-    }
+    };
 
     $scope.resetForm = function(){
     	$scope.product = {};
