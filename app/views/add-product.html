@@ -1,0 +1,55 @@
+<div class="row">
+	<infobox ng-show="!hasAdded">Fill your product info and press send</infobox>
+	<infobox ng-show="hasAdded">Your product is added successfully</infobox>
+</div>
+
+<div class="row productForm">
+<form name="productForm" novalidate>
+	<div class="col-md-7">
+		<div class="form-group" ng-class="{ 'has-error' : productForm.title.$invalid && productForm.title.$touched}">
+			<label class="control-label">Title*</label>
+			<input type="text" name="title" class="form-control" required ng-model="product.title">
+			<p ng-show="productForm.title.$error.required && !productForm.title.$pristine" class="help-block">Title is required</p>
+		</div>
+
+		<div class="form-group" ng-class="{ 'has-error' : productForm.price.$invalid && productForm.price.$touched}">
+			<label class="control-label">Price* (in euros)</label>
+			<input type="number" min="0" max="100000" name="price" class="form-control" required ng-model="product.price">
+			<p ng-show="productForm.price.$error.required && !productForm.price.$pristine" class="help-block">Price is required</p>
+			<p ng-show="productForm.price.$error.number && !productForm.price.$pristine" class="help-block">Only numbers are allowed</p>
+			<p ng-show="productForm.price.$error.max && !productForm.price.$pristine" class="help-block">Max price is 100000</p>
+			<p ng-show="productForm.price.$error.min && !productForm.price.$pristine" class="help-block">Only positive price is allowed</p>
+		</div>
+
+		<div class="form-group" ng-class="{ 'has-error' : productForm.description.$invalid && productForm.description.$touched}">
+			<label class="control-label">Describe what you're going to sell*</label>
+			<textarea class="form-control" name="description" required ng-model="product.description"> </textarea>
+			<p ng-show="productForm.description.$error.required && !productForm.description.$pristine" class="help-block">Description is required</p>
+		</div>
+
+		<div class="form-group" ng-class="{ 'has-error' : productForm.email.$invalid && productForm.email.$touched}">
+			<label class="control-label">Your email address*</label>
+			<input type="email" name="email" class="form-control" required ng-model="product.email">
+			<p ng-show="productForm.email.$error.required && !productForm.email.$pristine" class="help-block">Email is required</p>
+			<p ng-show="productForm.email.$error.email && !productForm.email.$pristine" class="help-block">Email is invalid</p>
+		</div>
+
+		<div class="form-group" ng-class="{ 'has-error' : productForm.number.$invalid && productForm.number.$touched}">
+			<label class="control-label">Your phone number*</label>
+			<input type="number" ng-minlength="4" ng-maxlength="15" name="number" class="form-control" required ng-model="product.number">
+			<p ng-show="productForm.number.$error.required && !productForm.number.$pristine" class="help-block">Phone number is required</p>
+			<p ng-show="productForm.number.$error.number && !productForm.number.$pristine" class="help-block">Only numbers are allowed</p>
+			<p ng-show="productForm.number.$error.minlength && !productForm.number.$pristine" class="help-block">Too short number</p>
+			<p ng-show="productForm.number.$error.maxlength && !productForm.number.$pristine" class="help-block">Too long number</p>
+		</div>
+		<button type="submit"  ng-click="addProduct(product)" ng-disabled="productForm.$invalid" class="btn btn-default">Send</button>
+	</div>
+
+	<div class="col-md-5 imageUpload">
+		<div>
+			<img ngf-src="files[0]" thumbnail-image-on-load  ngf-accept="'image/*'">
+			<button class="btn btn-default center-block" ngf-select accept="image/*" ng-model="files">Upload image</button>
+		</div>
+	</div>
+</form>
+</div>

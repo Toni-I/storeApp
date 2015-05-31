@@ -1,0 +1,35 @@
+<div class="row productInfo">
+	<div class="col-md-5">
+		<div class="thumbnail">
+			<img thumbnail-image-on-load src="{{product.imageUrl}}" />
+		</div>
+	</div>
+	<div class="col-md-7">
+		<div class="panel panel-default">
+			<div class="panel-heading">Product details</div>
+			<div class="panel-body">
+				<div class="product-group">
+					<span class="product-label"></span><span class="product-content title">{{product.title}}</span>
+				</div>
+				<div class="product-group">
+					<span class="product-label"></span><span class="product-content description">{{product.description}}</span>
+				</div>
+				<div class="product-group">
+					<span class="product-label"></span><span class="product-content price">{{product.priceCents | priceFilter | currency:"":2}} €</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="seller-info panel panel-default">
+			<div class="panel-heading"> Seller details</div>
+			<div class="panel-body">
+				<div>
+					<span></span><span>{{product.email}}</span>
+				</div>
+				<div>
+					<span></span><span>{{product.phone}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

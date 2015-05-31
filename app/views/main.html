@@ -1,0 +1,96 @@
+<div class="header">
+ 
+  <div class="row headerTextRow">
+    <div class="col-md-12">
+      <h4>Find cool products to buy. Feel free to search using our search box</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="line center-block"></div>
+    </div>
+  </div>
+  
+</div>
+<div class="row searchBox">
+  <form name="searchForm" novalidate> 
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Search keyword</label>
+          <input type="text" name="query" class="form-control" ng-model="query">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+         <div class="form-group" ng-class="{ 'has-error' : searchForm.minPrice.$invalid }">
+        <label class="control-label">Minimum price</label>
+        <input type="number"  name="minPrice"  class="form-control" ng-model="minPrice">
+
+    <div role="alert">
+        <span class="help-block" ng-show="searchForm.minPrice.$error.number">
+      Not valid number!</span>
+    </div>
+      </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group" ng-class="{ 'has-error' : searchForm.maxPrice.$invalid }">
+        <label class="control-label">Maximum price</label>
+        <input type="number"  name="maxPrice"   class="form-control" ng-model="maxPrice">
+         <div role="alert">
+      <span class="help-block" ng-show="searchForm.maxPrice.$error.number">
+      Not valid number!</span>
+    </div>
+      </div>
+      </div>
+
+      
+      
+     
+      
+  </form>
+  <div class="col-md-3">
+<button class="btn btn-default" ng-click="clearSearch()" >Clear search</button>
+</div>
+</div>
+
+<div class="row productList">
+  <div class="col-md-12 orderBy">
+    <div class="col-md-2">
+    <div ng-click="order('title')" class="predicate"  class="">
+      <span  ng-class="{ 'selected' : selectedSorting == 'title' }">Name</span>
+      <span class="arrow-container" >
+      <i  ng-class="{ 'selected' : (selectedSorting == 'title' && !reverse )}" class="fa fa-angle-up up"></i>
+      <i  ng-class="{ 'selected' : (selectedSorting == 'title' && reverse )}" class="fa fa-angle-down down" ></i>
+      <span>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div ng-click="order('priceCents')" class="predicate" class="">
+      <span  ng-class="{ 'selected' : selectedSorting == 'priceCents' }">Price</span>
+      <span class="arrow-container" >
+      <i  ng-class="{ 'selected' : (selectedSorting == 'priceCents' && !reverse )}" class="fa fa-angle-up up"></i>
+      <i  ng-class="{ 'selected' : (selectedSorting == 'priceCents' && reverse )}" class="fa fa-angle-down down"></i>
+      <span>
+    </div>
+    </div>
+
+    
+  </div>
+  <ul class="col-md-12">
+    <li ng-repeat="product in filteredItems = (productList | filter:searchText | minPriceFilter:minPrice | maxPriceFilter:maxPrice)" >
+      <a href="#product/{{product.id}}">
+      <div class="row">
+        <div class="col-md-2">
+          <img src="{{product.thumbnailUrl}}" thumbnail-image-on-load ></img>
+        </div>
+        
+        <div class="col-md-10">
+          <h5 class="product-title"> {{product.title}}</h5>
+          <span class="product-price"> {{product.priceCents | priceFilter | currency:"":2}} €</span>
+        </div>
+       
+      </div>
+    </li>
+     </a>
+  </ul>
+  <div class=" col-md-12 bg-info infobox center-block" ng-show="!filteredItems.length">Your search did not match any products!</div>
+</div>
