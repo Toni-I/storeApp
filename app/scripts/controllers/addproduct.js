@@ -34,7 +34,7 @@ angular.module('storeApp')
   		});
     };
 
-    $scope.removeSuccessMessage(){
+    $scope.removeSuccessMessage = function(){
     	$scope.hasAdded = false;
     }
 

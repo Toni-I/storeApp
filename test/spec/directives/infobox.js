@@ -13,9 +13,9 @@ describe('Directive: infobox', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<infobox>testi</infobox>');
+    element = angular.element('<infobox>test</infobox>');
     element = $compile(element)(scope);
-    
+
     expect(element.text()).toBe('test');
   }));
 });

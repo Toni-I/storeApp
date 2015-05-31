@@ -12,7 +12,7 @@ angular.module('storeApp')
 			restrict: 'A',
 			link: function(scope,element,attrs){
 				element.bind('error', function(){	
-					attrs.$set('src', '/images/noimage.jpg');
+					attrs.$set('src', 'images/noimage.jpg');
 				});
 			}
 		};
